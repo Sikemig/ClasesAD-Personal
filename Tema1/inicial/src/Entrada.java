@@ -5,4 +5,5 @@ public class Entrada {
 
     //Para añadir librerias que no esten en el jdk --> file --> project resources --> libraries y añadimos la ruta de la libreria descargada
     // creamos un paquete a modo directorio para guardar las librerias (mysql connector) --> No es lo más recomendable, la libreria apunta a un directorio local
+    //Lo mejor para librerias es crear un proyecto de tipo Maven
 }
