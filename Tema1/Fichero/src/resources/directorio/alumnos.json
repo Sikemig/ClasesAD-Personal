@@ -1,0 +1,8 @@
+/* empieza con {} -> JSONObject */
+/* empieza con [] -> JSONarray */
+{
+	"nombre":"Sikem",
+	"apellido":"Iglesias",
+	"edad":33,
+	"asignatura":["ad","pmdm","di"]
+}

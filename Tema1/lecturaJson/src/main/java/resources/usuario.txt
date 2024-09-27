@@ -1,0 +1,6 @@
+{
+	"nombre":"Sikem",
+	"apellido":"Iglesias",
+	"edad":33,
+	"asignatura":["ad","pmdm","di"]
+}

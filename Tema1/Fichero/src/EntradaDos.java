@@ -1,16 +1,14 @@
-import controller.GestorFicheros;
-
-import java.io.FileNotFoundException;
+import controller.GestorFicherosLectura;
 
 public class EntradaDos {
 
     public static void main(String[] args) {
-        GestorFicheros gestorFicheros = new GestorFicheros();
+        GestorFicherosLectura gestorFicherosLectura = new GestorFicherosLectura();
        // gestorFicheros.lecturaDirectorios("src/resources/directorio");
        // gestorFicheros.lecturaDirectorios("src/resources/ficheros");
 
        // gestorFicheros.lecturaRecursiva("C:\\Users\\Sikem\\Documents");
-        gestorFicheros.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
+        gestorFicherosLectura.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
     }
 
 }

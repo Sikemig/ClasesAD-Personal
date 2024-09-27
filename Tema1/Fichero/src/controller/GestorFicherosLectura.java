@@ -1,7 +1,7 @@
 package controller;
 import java.io.*;
 
-public class GestorFicheros {
+public class GestorFicherosLectura {
 
     public void lecturaDirectorios(String path){
         // File (logico) -> apunta a un file (fisico)
@@ -106,4 +106,5 @@ public class GestorFicheros {
             //fileReader=new FileReader(file);
         }
     }
+
 }
