@@ -12,6 +12,8 @@ public class GestorFicherosCombinado {
 
         System.out.println("Introduce el mensaje a guardar");
         String mensaje = scanner.nextLine();
+        System.out.println("Por favor, indica la fase de cifrado");
+        int fase = scanner.nextInt();
 
         try {
             fileWriter = new FileWriter(file, false); //importante fuera del for porque con append false nos lo machacaria constantemente
@@ -19,7 +21,9 @@ public class GestorFicherosCombinado {
                 char letra = mensaje.charAt(i);
                 //fileWriter.write(letra+"\n");
                 int codigo = (int) letra;
-                fileWriter.write(String.valueOf((codigo*5)+"\n")); //con String.valueOf hacemos que lo que escribamos lo pase a ASCII
+                char codigoLetra = (char)(codigo*fase);
+                fileWriter.write(codigoLetra);
+                //fileWriter.write(String.valueOf((codigo*fase)+"\n")); //con String.valueOf hacemos que lo que escribamos lo pase a ASCII
             }
         } catch (IOException e) {
             System.out.println("Error en los permisos");
@@ -34,6 +38,10 @@ public class GestorFicherosCombinado {
     }
 
     public void lecturaCifrada(String path){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Por favor indica la fase de descifrado");
+        int fase = scanner.nextInt();
+
         File file = new File(path);
         BufferedReader bufferedReader = null;
 
@@ -44,9 +52,44 @@ public class GestorFicherosCombinado {
 
             while ((lectura = bufferedReader.readLine())!= null){
                 int codigo = Integer.parseInt(lectura);
-                System.out.println((char)(codigo/5));
+                System.out.println((char)(codigo/fase));
             }
             System.out.println(lecturaCompleta);
+
+        } catch (IOException e) {
+            System.out.println("Fallo al leer el fichero");
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                System.out.println("Fallo al cerrar el flujo");
+            }
+        }
+    }
+
+
+    public void lecturaCifradaCodigo(String path){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Por favor indica la fase de descifrado");
+        int fase = scanner.nextInt();
+
+        File file = new File(path);
+        BufferedReader bufferedReader = null;
+
+        try {
+            bufferedReader = new BufferedReader(new FileReader(file));
+            String lectura = null;
+            StringBuffer lecturaCompleta = new StringBuffer();
+
+            while ((lectura = bufferedReader.readLine())!= null){
+                lecturaCompleta.append(lectura);
+            }
+            System.out.println(lecturaCompleta);
+
+            for (int i = 0; i < lecturaCompleta.length(); i++) {
+                int codigo = (int)lecturaCompleta.charAt(i)/fase;
+                System.out.println((char) codigo);
+            }
 
         } catch (IOException e) {
             System.out.println("Fallo al leer el fichero");
