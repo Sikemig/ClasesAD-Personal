@@ -1,10 +1,11 @@
+import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.*;
 
 public class Entrada {
     public static void main(String[] args) {
         File file = new File("src/main/java/resources/usuario.txt");
-        //txt -> JSON
+        //para convertir un txt -> JSON
         BufferedReader bufferedReader=null;
 
         try {
@@ -20,10 +21,13 @@ public class Entrada {
             String nombreUsuario = usuario.getString("nombre");
             System.out.println(nombreUsuario);
 
+            JSONArray asignaturas = usuario.getJSONArray("asignatura");
+            System.out.println(asignaturas);
+
         } catch (FileNotFoundException e) {
             System.out.println("Error en el fichero");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error al leer");
         } finally {
             try {
                 bufferedReader.close();
