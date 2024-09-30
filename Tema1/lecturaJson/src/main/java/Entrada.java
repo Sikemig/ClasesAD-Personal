@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Entrada {
     public static void main(String[] args) {
-        File file = new File("src/main/java/resources/usuario.txt");
+       /* File file = new File("src/main/java/resources/usuario.txt");
         //para convertir un txt -> JSON
         BufferedReader bufferedReader=null;
 
@@ -34,6 +34,14 @@ public class Entrada {
             } catch (IOException e) {
                 System.out.println("Error en el cerrado");
             }
-        }
+        }*/
+        PeticionJSON peticionJSON = new PeticionJSON();
+        peticionJSON.procesarPeticion();
+
+
+        // 1. Leer productos -> imprima informacion de los productos Nombre, precio, stock, descripcion
+        //2 . buscar productos --> pida por teclado un ID y muestre la informacion de dicho producto
+        //3. buscar por
+
     }
 }
