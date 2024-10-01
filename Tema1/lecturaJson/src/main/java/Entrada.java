@@ -38,10 +38,11 @@ public class Entrada {
         PeticionJSON peticionJSON = new PeticionJSON();
         peticionJSON.procesarPeticion();
 
-
+        // Entrada nueva
         // 1. Leer productos -> imprima informacion de los productos Nombre, precio, stock, descripcion
         //2 . buscar productos --> pida por teclado un ID y muestre la informacion de dicho producto
-        //3. buscar por
-
+        //3. Filtrar por precio -> pide un precio minimo o max y se muestran los productos que cumplen el filtro
+        //4. exportar productos -> escribe en un .txt todos los productos de la URL -> JSON
+        // BUSCAR INFORMACION DE LA LIBRERIA GSON
     }
 }

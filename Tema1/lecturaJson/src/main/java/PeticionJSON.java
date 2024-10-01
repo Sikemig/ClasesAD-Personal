@@ -31,7 +31,7 @@ public class PeticionJSON {
             JSONArray listaProductos = peticionProductos.getJSONArray("products");
             for(Object item : listaProductos){ //tiene que ser Object porque puede que haya cosas que no son JSONObject
                 //item es un JSONOBJECT -> lo sabemos de antemano
-                JSONObject producto = (JSONObject) item;
+                JSONObject producto = (JSONObject) item; //Aqui porque lo sabemos, pero si no hay JSONObject va a cascar
                 System.out.println("Titulo: " + producto.getString("title"));
                 System.out.println("Precio: " + producto.getDouble("price"));
 
