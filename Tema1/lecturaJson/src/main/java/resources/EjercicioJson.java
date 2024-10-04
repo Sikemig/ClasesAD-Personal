@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class EjercicioJson {
 
     // Ejercicio 1
-    public void peticionJSON(){
+    public void peticionJSON() {
         String urlString = "https://dummyjson.com/products";
 
         try {
@@ -23,22 +23,27 @@ public class EjercicioJson {
 
             //Lectura de informacion
             String linea = null;
-            StringBuffer stringBuffer = new StringBuffer();
-            while((linea = bufferedReader.readLine())!=null){
-                stringBuffer.append(linea);
-            }
+            linea = bufferedReader.readLine();
 
             //Navegar por la informacion
-            JSONObject peticionProductos = new JSONObject(stringBuffer.toString());
+            JSONObject peticionProductos = new JSONObject(linea);
             JSONArray listaProductos = new JSONArray(peticionProductos.getJSONArray("products"));
 
-            for (Object item : listaProductos){
+            for (Object item : listaProductos) {
                 JSONObject producto = (JSONObject) item;
+                /* metodo 1
                 System.out.println("Nombre Producto: "+ producto.getString("title"));
                 System.out.println("Precio Producto: "+ producto.getDouble("price"));
                 System.out.println("Stock Producto: "+ producto.getInt("stock"));
                 System.out.println("Descripcion Producto: "+ producto.getString("description"));
                 System.out.println();
+                */
+
+                // metodo 2
+                String title = producto.getString("title");
+                String description = producto.getString("description");
+                double price = producto.getDouble("price");
+                System.out.printf("El producto %s tiene como precio %.2f y una descripcion de %s\n", title, price, description);
             }
 
         } catch (MalformedURLException e) {
@@ -49,7 +54,7 @@ public class EjercicioJson {
     }
 
     //Ejercicio 2
-    public void lecturaID(){
+    public void lecturaID() {
         String urlString = "https://dummyjson.com/products";
 
         try {
@@ -61,7 +66,7 @@ public class EjercicioJson {
             //Lectura de informacion
             String linea = null;
             StringBuffer stringBuffer = new StringBuffer();
-            while((linea = bufferedReader.readLine())!=null){
+            while ((linea = bufferedReader.readLine()) != null) {
                 stringBuffer.append(linea);
             }
 
@@ -72,11 +77,11 @@ public class EjercicioJson {
             int id = 0;
             Scanner scanner = new Scanner(System.in);
             System.out.println("Por favor, introduzca el ID del producto");
-            id=scanner.nextInt();
+            id = scanner.nextInt();
 
-            for (Object item : listaProductos){
+            for (Object item : listaProductos) {
                 JSONObject producto = (JSONObject) item;
-                if(id == producto.getInt("id")) {
+                if (id == producto.getInt("id")) {
                     System.out.println("Nombre Producto: " + producto.getString("title"));
                     System.out.println("Precio Producto: " + producto.getDouble("price"));
                     System.out.println("Stock Producto: " + producto.getInt("stock"));
@@ -92,7 +97,7 @@ public class EjercicioJson {
     }
 
     //Ejercicio 3
-    public void lecturaPrecio(){
+    public void lecturaPrecio() {
         String urlString = "https://dummyjson.com/products";
 
         try {
@@ -104,7 +109,7 @@ public class EjercicioJson {
             //Lectura de informacion
             String linea = null;
             StringBuffer stringBuffer = new StringBuffer();
-            while((linea = bufferedReader.readLine())!=null){
+            while ((linea = bufferedReader.readLine()) != null) {
                 stringBuffer.append(linea);
             }
 
@@ -115,13 +120,13 @@ public class EjercicioJson {
             double precioMin, precioMax = 0;
             Scanner scanner = new Scanner(System.in);
             System.out.println("Por favor, introduzca el precio minimo");
-            precioMin=scanner.nextInt();
+            precioMin = scanner.nextInt();
             System.out.println("Por favor, introduzca el precio maximo");
-            precioMax=scanner.nextInt();
+            precioMax = scanner.nextInt();
 
-            for (Object item : listaProductos){
+            for (Object item : listaProductos) {
                 JSONObject producto = (JSONObject) item;
-                if(precioMin <= producto.getDouble("price") && precioMax >= producto.getDouble("price")) {
+                if (precioMin <= producto.getDouble("price") && precioMax >= producto.getDouble("price")) {
                     System.out.println("Nombre Producto: " + producto.getString("title"));
                     System.out.println("Precio Producto: " + producto.getDouble("price"));
                     System.out.println("Stock Producto: " + producto.getInt("stock"));
@@ -142,45 +147,58 @@ public class EjercicioJson {
 
         //Preparamos la escritura
         File file = new File("src/main/java/resources/exportacion.txt");
+        // metodo 1 -> BufferedWriter bufferedWriter = null;
+        /* metodo 2 -> */ PrintWriter printWriter = null;
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, false));
+            //metodo 1 -->  bufferedWriter = new BufferedWriter(new FileWriter(file, false));
+            /*metodo 2 --> */ printWriter = new PrintWriter(new FileWriter(file));
 
-            try {
-                // Conexion con la pagina
-                URL url = new URL(urlString);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            // Conexion con la pagina
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
 
-                //Lectura de informacion
-                String linea = null;
-                StringBuffer stringBuffer = new StringBuffer();
-                while ((linea = bufferedReader.readLine()) != null) {
-                    stringBuffer.append(linea);
-                }
-
-                //Navegar por la informacion
-                JSONObject peticionProductos = new JSONObject(stringBuffer.toString());
-                JSONArray listaProductos = new JSONArray(peticionProductos.getJSONArray("products"));
-
-                for (Object item : listaProductos) {
-                    JSONObject producto = (JSONObject) item;
-                    bufferedWriter.append(producto.getString("title"));
-                    bufferedWriter.newLine();
-                }
-
-                System.out.println("Se ha completado la exportación");
-
-            } catch (MalformedURLException e) {
-                System.out.println("No es una web, por favor intentelo de nuevo");
-            } catch (IOException e) {
-                System.out.println("Error en la pagina, no responde");
-            } finally {
-                bufferedWriter.close();
+            //Lectura de informacion
+            String linea = null;
+            StringBuffer stringBuffer = new StringBuffer();
+            while ((linea = bufferedReader.readLine()) != null) {
+                stringBuffer.append(linea);
             }
 
+            //Navegar por la informacion
+            JSONObject peticionProductos = new JSONObject(stringBuffer.toString());
+            JSONArray listaProductos = new JSONArray(peticionProductos.getJSONArray("products"));
+
+            for (Object item : listaProductos) {
+                JSONObject producto = (JSONObject) item;
+                /* metodo 1
+                bufferedWriter.append(producto.getString("title"))
+                bufferedWriter.newLine();
+                 */
+
+                // metodo 2
+                String title = producto.getString("title");
+                String description = producto.getString("description");
+                double price = producto.getDouble("price");
+                String exportacionProducto = String.format("Title:%s price:%.2f description:%s", title, price, description);
+                printWriter.println(exportacionProducto);
+            }
+
+            System.out.println("Se ha completado la exportación");
+
+        } catch (MalformedURLException e) {
+            System.out.println("No es una web, por favor intentelo de nuevo");
         } catch (IOException e) {
             System.out.println("No se encuentra el archivo");
+        } finally {
+            //metodo 1 --> bufferedWriter.close();
+            /* metodo 2 --> */
+            try{
+                printWriter.close();
+            } catch (NullPointerException e){
+                System.out.println("Error en el cerrado del archivo");
+            }
         }
     }
 }
