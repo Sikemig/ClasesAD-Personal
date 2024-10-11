@@ -12,6 +12,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Producto implements Serializable {
+    //Necesario para serializar
+    private static final Long serialVersionUID = 1234L;
     // variables - private
     private int id;
     private String title;
@@ -21,7 +23,7 @@ public class Producto implements Serializable {
     // obligatorio constructores getters y setters, con libreria lombok se hace mas facil
     // arriba se pone el @Setter, @Getter, @NoArgsConstructor y @AllArgsConstructor
 
-    //constructores --> de manera predeteminada hay 1, el vacío
+    //constructores --> de manera predeteminad  a hay 1, el vacío
     // el constructor vacío desaparece en cuanto ponemos otro constructor, por lo que hay que ponerlo manualmente
 
     //Si queremos un constructor con menos argumentos SI TENEMOS que hacerlo manualmente (clic derecho)
@@ -30,5 +32,13 @@ public class Producto implements Serializable {
         this.title = title;
         this.price = price;
         this.stock = stock;
+    }
+
+    public void mostrarDatos(){
+        System.out.println("serialVersionUID = " + serialVersionUID);
+        System.out.println("id = " + id);
+        System.out.println("title = " + title);
+        System.out.println("price = " + price);
+        System.out.println("stock = " + stock);
     }
 }

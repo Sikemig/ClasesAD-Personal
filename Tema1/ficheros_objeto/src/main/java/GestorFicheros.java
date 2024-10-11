@@ -1,4 +1,5 @@
 import model.Producto;
+import model.Tienda;
 
 import java.io.*;
 
@@ -74,7 +75,7 @@ public class GestorFicheros {
         try {
             objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
             objectOutputStream.writeObject(new Producto(1, "Producto1", 97.76, 2));
-            objectOutputStream.writeObject(new Producto(2, "Producto2", 12.33, 10));
+            objectOutputStream.writeObject(new Tienda("Tienda1", 123, 10));
         } catch (IOException e) {
             System.out.println("Error en el fichero");
         } finally {
@@ -83,6 +84,28 @@ public class GestorFicheros {
             } catch (IOException | NullPointerException e) {
                 System.out.println("Error al cerrar");
             }
+        }
+    }
+
+    public void lecturaObjeto(String path){
+        File file = new File(path);
+        ObjectInputStream objectInputStream = null;
+
+        try {
+            objectInputStream = new ObjectInputStream(new FileInputStream(file));
+            Producto producto = (Producto) objectInputStream.readObject(); // hay que castear el tipo de Clase
+            //Se necesita el mismo serialVersionUID para la lectura
+            producto.mostrarDatos();
+
+            Tienda tienda = (Tienda) objectInputStream.readObject();
+            tienda.mostrarDatos();
+
+        } catch (IOException e) {
+            System.out.println("Error en la lectura del fichero");
+        } catch (ClassNotFoundException e) { //Significa que no entiende la Clase que tiene que leer con el readObject
+            System.out.println("No se encuentra la clase destino");
+        } catch (ClassCastException e){
+            System.out.println("Error al declarar el tipo de datos");
         }
     }
 }
