@@ -19,8 +19,8 @@ public class DbConnection {
     }
 
     private void newConnection() {
-        // necesitamos URL de conexión --> jdbc:mysql://localhost o 127.0.0.1:3306 o el DNS/concesionario - mysql en nuestro caso
-        String url = "jdbc:mysql://localhost:3306/concesionario";
+        // necesitamos URI de conexión --> jdbc:mysql://localhost o 127.0.0.1:3306 o el DNS/concesionario - mysql en nuestro caso
+        String url = "jdbc:mysql://127.0.0.1:3306/concesionario";
 
         try {
             connection = DriverManager.getConnection(url, "root", "");
