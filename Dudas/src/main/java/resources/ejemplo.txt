@@ -1,0 +1,10 @@
+Esto es un ejemplo de escritura
+Esto es un ejemplo de escritura
+Esto es un ejemplo de escritura
+Esto es un ejemplo de escritura
+Esto es un ejemplo de escritura
+Esto es un ejemplo de escritura
+Esto es un ejemplo de escritura
+Esto es un ejemplo de escritura
+Esto es una linea con bufferedWriter
+Esta linea va con PrintWriter

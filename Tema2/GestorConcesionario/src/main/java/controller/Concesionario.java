@@ -38,6 +38,16 @@ public class Concesionario {
         try {
             Statement statement = connection.createStatement();
 
+            String query = String.format("INSERT INTO %s (%s,%s,%s,%s) VALUES ('%s', '%s', '%s', %d)",
+                    SchemaDB.TAB_EMP,
+                    SchemaDB.COL_EMP_NAME, SchemaDB.COL_EMP_SURNAME, SchemaDB.COL_EMP_MAIL, SchemaDB.COL_EMP_PHO,
+                    empleado.getNombre(), empleado.getApellido(), empleado.getCorreo(), empleado.getTelefono());
+
+            statement.execute(query); // hay o no fallo
+
+
+
+
             String Psquery = String.format("INSERT INTO %s (%s,%s,%s,%s) VALUES (?,?,?,?)",
                     SchemaDB.TAB_EMP,
                     SchemaDB.COL_EMP_NAME, SchemaDB.COL_EMP_SURNAME, SchemaDB.COL_EMP_MAIL, SchemaDB.COL_EMP_PHO,
@@ -61,14 +71,8 @@ public class Concesionario {
             // %f -> double o float
             // %b --> boolean
             // %c --> char
-            String query = String.format("INSERT INTO %s (%s,%s,%s,%s) VALUES ('%s', '%s', '%s', '%d)",
-                    SchemaDB.TAB_EMP,
-                    SchemaDB.COL_EMP_NAME, SchemaDB.COL_EMP_SURNAME, SchemaDB.COL_EMP_MAIL, SchemaDB.COL_EMP_PHO,
-                    empleado.getNombre(), empleado.getApellido(), empleado.getCorreo(), empleado.getTelefono());
 
-            statement.execute(query); // hay o no fallo
             // statement.executeUpdate(); // nos dice cuantas filas estan afectadas
-
         } catch (SQLException e) {
             System.out.println("Error en la conexion de la BBDD");
         }

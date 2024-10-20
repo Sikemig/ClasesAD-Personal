@@ -17,8 +17,8 @@ public class Entrada {
         Connection connection2 = dbConnection2.getConnection();*/
 
 
-//        Concesionario concesionario = new Concesionario();
-  //      concesionario.insertarTrabajador(new Empleado("Sikem,", "Iglesias", "sikem@gmail.com", 123));
+        Concesionario concesionario = new Concesionario();
+        concesionario.insertarTrabajador(new Empleado("Sikem", "Iglesias", "sikem@gmail.com", 123));
 
         //System.out.println("Filas afectadas: "+concesionario.borrarUsuario(2));
     }
