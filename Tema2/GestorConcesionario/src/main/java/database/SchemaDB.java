@@ -12,9 +12,13 @@ public interface SchemaDB {
 
     String DB_NAME = "concesionario";
     String TAB_EMP = "empleados";
+    String TAB_KIN = "tipos";
     String COL_ID = "id";
     String COL_EMP_NAME = "nombre";
     String COL_EMP_SURNAME = "apellido";
     String COL_EMP_MAIL = "correo";
     String COL_EMP_PHO = "telefono";
+    String COL_EMP_KIN = "tipo";
+    String COL_KIN_DES = "descripcion";
+    String COL_KIN_SIG = "siglas";
 }
