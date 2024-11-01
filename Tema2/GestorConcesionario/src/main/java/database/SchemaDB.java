@@ -21,4 +21,10 @@ public interface SchemaDB {
     String COL_EMP_KIN = "tipo";
     String COL_KIN_DES = "descripcion";
     String COL_KIN_SIG = "siglas";
+
+    String TAB_COC = "coches";
+    String COL_COC_MAR = "marca";
+    String COL_COC_MOD = "modelo";
+    String COL_COC_PRE = "precio";
+    String COL_COC_CV = "cv";
 }

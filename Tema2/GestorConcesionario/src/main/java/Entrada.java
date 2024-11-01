@@ -27,6 +27,8 @@ public class Entrada {
 
         //System.out.println("Filas afectadas: "+concesionario.borrarUsuario(2));
 
-        concesionario.leerUsuarios(2);
+        //concesionario.leerUsuarios(2);
+
+        concesionario.agregarCoche();
     }
 }
