@@ -3,6 +3,7 @@ package controller;
 import com.mysql.cj.protocol.Resultset;
 import dao.CochesDAO;
 import dao.EmpleadoDAO;
+import dao.VentaDAO;
 import database.DbConnection;
 import database.SchemaDB;
 import model.Coche;
@@ -14,10 +15,12 @@ import java.util.Scanner;
 public class Concesionario {
     private EmpleadoDAO empleadoDAO;
     private CochesDAO cochesDAO;
+    private VentaDAO ventaDAO;
 
     public Concesionario(){
         empleadoDAO = new EmpleadoDAO();
         cochesDAO = new CochesDAO();
+        ventaDAO = new VentaDAO();
     }
 
     public void insertarTrabajadorDAO(Empleado empleado){
@@ -186,4 +189,35 @@ public class Concesionario {
     // tener la funcionalidad de vender un coche -> matricula
     // y el coche lo vende un vendedor (tengo que decir quien lo vende)
     // hay que tener la funcionalidad de cual es el vendedor que más coches ha vendido
+    public void realizarVenta(){
+        System.out.println("Dime el coche que vas a vender");
+        //Pedir el id por scanner
+        int idCoche=0;
+
+        System.out.println("Dime el vendedor del coche");
+        int idEmpleado=0;
+
+        try {
+            // el coche que estas vendiendo está disponible?
+                // si no esta disponible haz XXXX
+                    // buscar un coche con las mismas caracteristicas de cv y precio
+                // si está disponible, procede a registrar la venta
+                    //cochesDAO.realizarVenta(1);
+                    //empleadoDAO.realizarVenta(1);
+            ventaDAO.realizarVenta(idEmpleado,idCoche);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void mostrarEmpleadosMes(int numero){
+        System.out.println("Dime cuantos quierees sacar");
+        //int numeroEmpleados= 0;
+        try {
+            empleadoDAO.obtenerEmpleadoMes(3);
+        } catch (SQLException e) {
+            System.out.println("Error a la hora de obtener los empleados, quieres hacer XXX?");
+        }
+
+    }
 }

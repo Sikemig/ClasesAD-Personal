@@ -80,4 +80,10 @@ public class CochesDAO {
         }
         return listaResultado;
     }
+
+    public void realizarVenta(int id){
+        // DELETE -> WHERE ID = id  / para borrarlo
+
+        //UPDATE -> estado = false where id = id / para mantener un registro en la BBDD
+    }
 }
