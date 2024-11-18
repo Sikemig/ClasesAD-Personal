@@ -24,9 +24,9 @@ public class MongoDBConnection {
         // todos los datos que tu traduzcas son de un tipo concreto
 
         // CodeProvider -> Pojo --> con esto se traducen los Document a objeto directamente
-        CodecProvider codecProvider = PojoCodecProvider.builder().automatic(true).build();
+        codecProvider = PojoCodecProvider.builder().automatic(true).build();
 
-        CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
+        codecRegistry = CodecRegistries.fromRegistries(
                 MongoClients.create().getCodecRegistry(),
                 CodecRegistries.fromProviders(codecProvider)
         );
