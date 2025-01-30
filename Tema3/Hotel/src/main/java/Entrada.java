@@ -145,6 +145,42 @@ public class Entrada {
 
         //clienteDAO.crearCliente(new Cliente("Casper"), 15);
 
-        habitacionDAO.getAllClientes(15);
+        //habitacionDAO.getAllClientes(15);
+
+        // Ejemplo de manytomany sin DAO
+        /*Session session = new HibernateUtil().getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+        System.out.println("Sacando los trabajadores que se relacionaron con el cliente 1");
+        Cliente cliente = session.get(Cliente.class, 1); // Cliente con ID 1
+        for(Trabajador trabajador : cliente.getListaTrabajadores()){
+            System.out.println(trabajador.getNombre());
+        }
+
+        System.out.println("Sacando los clientes a los que atendió el trabajador 5");
+        Trabajador trabajador = session.get(Trabajador.class, 5);
+        for(Cliente cliente2: trabajador.getListaClientes()){
+            System.out.println(cliente2.getNombre());
+        }
+
+        session.getTransaction().commit();
+        session.close();*/
+
+
+        // vamos a relacionar el cliente 1 con el trabajador 4
+        Session session = new HibernateUtil().getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+        Cliente cliente = session.get(Cliente.class, 1);
+        Trabajador trabajador = session.get(Trabajador.class, 4);
+
+        cliente.getListaTrabajadores().add(trabajador);
+        trabajador.getListaClientes().add(cliente);
+
+        session.persist(cliente);
+        session.persist(trabajador);
+
+        session.getTransaction().commit();
+        session.close();
     }
 }

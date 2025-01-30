@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 @Getter
@@ -51,6 +52,9 @@ public class Trabajador implements Serializable {
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name="id_habitacion")
     private Habitacion habitacion;
+
+    @ManyToMany(mappedBy = "listaTrabajadores", fetch = FetchType.EAGER) // nombre del atributo que guarda la entidad dominante (CLIENTE)
+    private List<Cliente> listaClientes;
 
 
     public Trabajador(int id) {

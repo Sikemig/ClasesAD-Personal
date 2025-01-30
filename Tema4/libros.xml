@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- solo puedo tener un nodo root-->
+
+<libreria id="1" tipo="tecnologia"><!-- nombre de la bbdd : libreria-->
+    <libros categoria="ciencia_ficcion">
+        <libro isbn="1234A" idioma="en" paginas="123">
+            <titulo>Harry Potter</titulo>
+            <autor>J.K. Rowling</autor>
+            <precio moneda="dolar">25.90</precio>
+        </libro>
+
+        <libro isbn="13" idioma="es">
+        </libro>
+    </libros>
+
+    <libros categoria="sociedad">
+
+    </libros>
+
+    <revistas categoria="historia">
+        <revista>
+        </revista>
+    </revistas>
+
+    <revistas categoria="entretenimiento">
+
+    </revistas>
+</libreria>
