@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.gestorligas.LigasApp;
+import org.example.gestorligas.dao.UsuarioDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,11 +27,17 @@ public class LoginController implements Initializable {
     @FXML
     private TextField editCorreo, editPass;
 
+    private UsuarioDAO usuarioDAO;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        instancias();
         acciones();
 
+    }
+
+    private void instancias() {
+        usuarioDAO = new UsuarioDAO();
     }
 
     private void acciones() {
@@ -43,8 +50,9 @@ public class LoginController implements Initializable {
                 alert.showAndWait();
             } else {
                 // login -> base de datos -> HIBERNATE
-                if (editCorreo.getText().equalsIgnoreCase("sikem@gmail.com")
-                        && editPass.getText().equals("1234")) {
+                if(usuarioDAO.getUsuarioLogin(editCorreo.getText(), editPass.getText()) != null){
+                    System.out.println("hay usuario, login correcto");
+
                     // cargar el FXML
                     FXMLLoader fxmlLoader = new FXMLLoader(LigasApp.class.getResource("main-view.fxml"));
                     try {
