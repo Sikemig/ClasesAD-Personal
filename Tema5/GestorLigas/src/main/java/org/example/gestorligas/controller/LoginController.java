@@ -51,7 +51,6 @@ public class LoginController implements Initializable {
             } else {
                 // login -> base de datos -> HIBERNATE
                 if(usuarioDAO.getUsuarioLogin(editCorreo.getText(), editPass.getText()) != null){
-                    System.out.println("hay usuario, login correcto");
 
                     // cargar el FXML
                     FXMLLoader fxmlLoader = new FXMLLoader(LigasApp.class.getResource("main-view.fxml"));

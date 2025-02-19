@@ -8,12 +8,11 @@ module org.example.gestorligas {
     requires java.naming;
     requires static lombok;
 
-
-    opens org.example.gestorligas to javafx.fxml, mysql.connector.j, jakarta.persistence, org.hibernate.orm.core;
+    opens org.example.gestorligas to javafx.fxml,mysql.connector.j, jakarta.persistence, org.hibernate.orm.core;
     exports org.example.gestorligas;
 
-    opens org.example.gestorligas.model;
-    exports org.example.gestorligas.model to jakarta.persistence, org.hibernate.orm.core;
+    opens org.example.gestorligas.model to jakarta.persistence, org.hibernate.orm.core;
+    exports org.example.gestorligas.model;
 
     opens org.example.gestorligas.controller to javafx.fxml, mysql.connector.j, jakarta.persistence, org.hibernate.orm.core;
     exports org.example.gestorligas.controller;

@@ -20,10 +20,9 @@ public class HibernateUtils {
 
 
     private void createSessionFactory() {
-        // TODO -> crear el file asociado a los recursos
         File file = new File("src/main/resources/org/example/gestorligas/hibernate.cfg.xml");
 
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        sessionFactory = new Configuration().configure(file).buildSessionFactory();
     }
 
 
