@@ -34,14 +34,4 @@ public class Liga implements Serializable {
     public Liga(String nombre) {
         this.nombre = nombre;
     }
-
-    public Liga() {
-    }
-
-    public Liga(int id, String nombre, LocalDate fechaInicio, LocalDate fechaFin) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-    }
 }
