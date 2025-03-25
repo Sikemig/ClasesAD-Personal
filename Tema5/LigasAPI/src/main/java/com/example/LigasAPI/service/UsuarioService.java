@@ -13,4 +13,5 @@ public interface UsuarioService {
     Usuario getLogin(String correo, String pass);
 
     Usuario insertarUsuario(Usuario usuario);
+
 }
